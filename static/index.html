@@ -1,0 +1,363 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HEMC – Controle de Manutenção</title>
+  <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+
+  <header class="header">
+    <div class="header-brand">
+      <div class="header-icon">✚</div>
+      <div>
+        <h1>HEMC</h1>
+        <p>Controle de Manutenção de Equipamentos Hospitalares</p>
+      </div>
+    </div>
+    <a class="header-link" href="/docs" target="_blank">API Docs ↗</a>
+  </header>
+
+  <main class="main">
+    <div class="page-header">
+      <div>
+        <h2>Equipamentos</h2>
+        <p class="page-subtitle">Parque de equipamentos hospitalares</p>
+      </div>
+      <button class="btn btn-primary" id="btn-novo">+ Novo Equipamento</button>
+    </div>
+
+    <div class="aviso" id="aviso-catalogo" style="display:none">
+      ⚠️ Catálogos vazios — sem setores, tipos ou fabricantes cadastrados.
+      <button class="btn-seed" id="btn-seed">Carregar dados de exemplo</button>
+      <span id="seed-msg"></span>
+    </div>
+
+    <div class="card">
+      <div class="toolbar">
+        <input type="search" id="busca" class="search-input" placeholder="Buscar por patrimônio ou modelo…">
+        <span class="stats" id="stats"></span>
+      </div>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Patrimônio</th>
+              <th>Modelo</th>
+              <th>Tipo</th>
+              <th>Setor</th>
+              <th>Criticidade</th>
+              <th>Freq. Preventiva</th>
+              <th>Status</th>
+              <th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="tbody">
+            <tr><td colspan="8" class="empty">Carregando…</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </main>
+
+  <!-- ── Modal ──────────────────────────────────────────────── -->
+  <div class="modal-overlay" id="modal-overlay">
+    <div class="modal">
+      <div class="modal-header">
+        <h3 id="modal-titulo">Novo Equipamento</h3>
+        <button class="close-btn" id="btn-fechar">✕</button>
+      </div>
+
+      <form class="form" id="form" novalidate>
+
+        <div class="form-section">
+          <h4>Identificação</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nº Patrimônio *</label>
+              <input type="text" name="num_patrimonio" required placeholder="Ex: EQ-001">
+            </div>
+            <div class="form-group">
+              <label>Modelo</label>
+              <input type="text" name="modelo" placeholder="Ex: IntelliVue MX450">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nº Série</label>
+              <input type="text" name="num_serie" placeholder="Ex: SN-2024-001">
+            </div>
+            <div class="form-group">
+              <label>Data de Aquisição</label>
+              <input type="date" name="data_aquisicao">
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Valor de Aquisição (R$)</label>
+              <input type="number" name="valor_aquisicao" step="0.01" min="0" placeholder="0,00">
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>Classificação</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Grau de Criticidade *</label>
+              <select name="grau_criticidade" required>
+                <option value="">Selecione…</option>
+                <option value="A">A – Alta</option>
+                <option value="B">B – Média</option>
+                <option value="C">C – Baixa</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Frequência Preventiva *</label>
+              <select name="frequencia_preventiva" required>
+                <option value="">Selecione…</option>
+                <option value="mensal">Mensal</option>
+                <option value="trimestral">Trimestral</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Status Atual *</label>
+              <select name="status_atual" required>
+                <option value="em_funcionamento">Em Funcionamento</option>
+                <option value="em_manutencao">Em Manutenção</option>
+                <option value="aguardando_reparo">Aguardando Reparo</option>
+                <option value="fora_de_operacao">Fora de Operação</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <h4>Vínculos</h4>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Setor *</label>
+              <select name="id_setor" id="sel-setor" required></select>
+            </div>
+            <div class="form-group">
+              <label>Tipo de Equipamento *</label>
+              <select name="id_tipo" id="sel-tipo" required></select>
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Fabricante *</label>
+              <select name="id_fabricante" id="sel-fabricante" required></select>
+            </div>
+          </div>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" class="btn btn-secondary" id="btn-cancelar">Cancelar</button>
+          <button type="submit" class="btn btn-primary" id="btn-salvar">Salvar</button>
+        </div>
+
+      </form>
+    </div>
+  </div>
+
+  <script>
+    /* ── Estado ─────────────────────────────────────────────── */
+    let catalogs = { setores: [], tipos: [], fabricantes: [] };
+    let equipamentos = [];
+    let editingId = null;
+
+    /* ── Bootstrap ──────────────────────────────────────────── */
+    window.onload = async () => {
+      document.getElementById('btn-novo').onclick      = () => abrirModal();
+      document.getElementById('btn-fechar').onclick    = fecharModal;
+      document.getElementById('btn-cancelar').onclick  = fecharModal;
+      document.getElementById('modal-overlay').onclick = (e) => {
+        if (e.target === document.getElementById('modal-overlay')) fecharModal();
+      };
+      document.getElementById('busca').oninput = (e) => filtrar(e.target.value);
+      document.getElementById('form').onsubmit = salvar;
+      document.getElementById('btn-seed').onclick = carregarExemplos;
+
+      try {
+        await Promise.all([carregarCatalogos(), carregarEquipamentos()]);
+      } catch {
+        document.getElementById('tbody').innerHTML =
+          '<tr><td colspan="8" class="empty error">Não foi possível conectar à API. Verifique se o servidor está rodando.</td></tr>';
+      }
+    };
+
+    /* ── Catálogos ───────────────────────────────────────────── */
+    async function carregarCatalogos() {
+      const [setores, tipos, fabricantes] = await Promise.all([
+        fetch('/setores').then(r => r.json()),
+        fetch('/tipos').then(r => r.json()),
+        fetch('/fabricantes').then(r => r.json()),
+      ]);
+      catalogs = { setores, tipos, fabricantes };
+
+      const vazio = !setores.length || !tipos.length || !fabricantes.length;
+      document.getElementById('aviso-catalogo').style.display = vazio ? 'block' : 'none';
+
+      popularSelect('sel-setor',      setores,      'id_setor',      'nome_setor');
+      popularSelect('sel-tipo',       tipos,        'id_tipo',       'nome_tipo');
+      popularSelect('sel-fabricante', fabricantes,  'id_fabricante', 'nome_fabricante');
+    }
+
+    function popularSelect(id, itens, keyField, labelField) {
+      document.getElementById(id).innerHTML =
+        '<option value="">Selecione…</option>' +
+        itens.map(i => `<option value="${i[keyField]}">${i[labelField]}</option>`).join('');
+    }
+
+    /* ── Equipamentos ────────────────────────────────────────── */
+    async function carregarEquipamentos() {
+      const res = await fetch('/equipamentos/');
+      if (!res.ok) throw new Error('Falha ao carregar equipamentos');
+      equipamentos = await res.json();
+      renderizar(equipamentos);
+    }
+
+    function renderizar(lista) {
+      const tbody = document.getElementById('tbody');
+      const stats = document.getElementById('stats');
+      stats.textContent = `${lista.length} equipamento${lista.length !== 1 ? 's' : ''}`;
+
+      if (!lista.length) {
+        tbody.innerHTML = '<tr><td colspan="8" class="empty">Nenhum equipamento cadastrado.</td></tr>';
+        return;
+      }
+
+      tbody.innerHTML = lista.map(e => `
+        <tr>
+          <td><strong>${e.num_patrimonio}</strong></td>
+          <td>${e.modelo || '—'}</td>
+          <td>${resolver(catalogs.tipos,        'id_tipo',       e.id_tipo,       'nome_tipo')}</td>
+          <td>${resolver(catalogs.setores,       'id_setor',      e.id_setor,      'nome_setor')}</td>
+          <td><span class="badge crit-${e.grau_criticidade}">${e.grau_criticidade}</span></td>
+          <td>${e.frequencia_preventiva}</td>
+          <td><span class="badge status-${e.status_atual}">${fmtStatus(e.status_atual)}</span></td>
+          <td class="actions">
+            <button class="btn-icon edit"   title="Editar"   onclick="abrirModal(${e.id_equipamento})">✎</button>
+            <button class="btn-icon delete" title="Excluir"  onclick="confirmarExclusao(${e.id_equipamento}, '${e.num_patrimonio}')">✕</button>
+          </td>
+        </tr>
+      `).join('');
+    }
+
+    function resolver(arr, keyField, id, labelField) {
+      return arr.find(i => i[keyField] === id)?.[labelField] ?? `#${id}`;
+    }
+
+    const STATUS_LABEL = {
+      em_funcionamento:  'Funcionando',
+      em_manutencao:     'Em Manutenção',
+      aguardando_reparo: 'Ag. Reparo',
+      fora_de_operacao:  'Fora de Op.',
+    };
+    const fmtStatus = s => STATUS_LABEL[s] ?? s;
+
+    function filtrar(termo) {
+      const t = termo.toLowerCase();
+      renderizar(equipamentos.filter(e =>
+        e.num_patrimonio.toLowerCase().includes(t) ||
+        (e.modelo || '').toLowerCase().includes(t)
+      ));
+    }
+
+    /* ── Modal ───────────────────────────────────────────────── */
+    function abrirModal(id = null) {
+      editingId = id;
+      document.getElementById('modal-titulo').textContent = id ? 'Editar Equipamento' : 'Novo Equipamento';
+      document.getElementById('form').reset();
+
+      if (id) {
+        const e = equipamentos.find(e => e.id_equipamento === id);
+        if (e) {
+          Object.entries(e).forEach(([k, v]) => {
+            const el = document.querySelector(`[name="${k}"]`);
+            if (el && v != null) el.value = v;
+          });
+        }
+      }
+
+      document.getElementById('modal-overlay').classList.add('open');
+    }
+
+    function fecharModal() {
+      document.getElementById('modal-overlay').classList.remove('open');
+      editingId = null;
+    }
+
+    /* ── CRUD ────────────────────────────────────────────────── */
+    async function salvar(event) {
+      event.preventDefault();
+      const data = Object.fromEntries(new FormData(event.target));
+
+      ['id_setor', 'id_tipo', 'id_fabricante'].forEach(k => {
+        data[k] = parseInt(data[k]);
+      });
+      if (data.valor_aquisicao) data.valor_aquisicao = parseFloat(data.valor_aquisicao);
+      else delete data.valor_aquisicao;
+      ['data_aquisicao', 'num_serie', 'modelo'].forEach(k => {
+        if (!data[k]) delete data[k];
+      });
+
+      const url    = editingId ? `/equipamentos/${editingId}` : '/equipamentos/';
+      const method = editingId ? 'PUT' : 'POST';
+      const btn    = document.getElementById('btn-salvar');
+
+      btn.disabled    = true;
+      btn.textContent = 'Salvando…';
+
+      try {
+        const res = await fetch(url, {
+          method,
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        if (res.ok) {
+          fecharModal();
+          await carregarEquipamentos();
+        } else {
+          const err = await res.json();
+          alert('Erro: ' + (typeof err.detail === 'string' ? err.detail : JSON.stringify(err.detail)));
+        }
+      } finally {
+        btn.disabled    = false;
+        btn.textContent = 'Salvar';
+      }
+    }
+
+    async function carregarExemplos() {
+      const btn = document.getElementById('btn-seed');
+      const msg = document.getElementById('seed-msg');
+      btn.disabled = true;
+      btn.textContent = 'Carregando…';
+      try {
+        const res  = await fetch('/seed', { method: 'POST' });
+        const data = await res.json();
+        msg.textContent = ' ' + data.msg;
+        await carregarCatalogos();
+        await carregarEquipamentos();
+      } catch {
+        msg.textContent = ' Erro ao carregar dados.';
+      } finally {
+        btn.disabled = false;
+        btn.textContent = 'Carregar dados de exemplo';
+      }
+    }
+
+    async function confirmarExclusao(id, patrimonio) {
+      if (!confirm(`Excluir o equipamento ${patrimonio}?`)) return;
+      const res = await fetch(`/equipamentos/${id}`, { method: 'DELETE' });
+      if (res.ok) await carregarEquipamentos();
+      else alert('Erro ao excluir equipamento.');
+    }
+  </script>
+
+</body>
+</html>
