@@ -16,13 +16,22 @@ from models.manutencao import ChecklistItem, Peca
 from routes.catalogs import router as catalogs_router
 from routes.equipamento import router as equipamento_router
 from routes.chamado import router as chamado_router
-from routes.ordem_servico import router as os_router
+from routes.ordem_servico import router as os_router, gerar_os_preventivas_pendentes
 from routes.manutencao import router as manut_router
 from routes.usuario import router as usuario_router
 
 app = FastAPI(title="HEMC - Controle de Manutenção de Equipamentos Hospitalares")
 
 database.Base.metadata.create_all(bind=database.engine)
+
+
+@app.on_event("startup")
+def startup():
+    db = database.SessionLocal()
+    try:
+        gerar_os_preventivas_pendentes(db)
+    finally:
+        db.close()
 
 app.include_router(equipamento_router, prefix="/api")
 app.include_router(catalogs_router, prefix="/api")
@@ -46,6 +55,10 @@ def indicadores(db: Session = Depends(database.get_db)):
     from models.chamado import Chamado
     from models.ordem_servico import OrdemServico as OS
     from models.manutencao import Manutencao
+
+    # Disparo oportunístico: gera OS preventivas pendentes a cada consulta da home.
+    # Mantém o ciclo síncrono sem precisar de scheduler externo.
+    gerar_os_preventivas_pendentes(db)
 
     total = db.query(Equipamento).count()
     criticos = db.query(Equipamento).filter(Equipamento.grau_criticidade == "A").count()

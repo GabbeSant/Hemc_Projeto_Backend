@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="pt-BR">
   <head>
     <meta charset="UTF-8" />
@@ -12,7 +12,7 @@
     <aside class="sidebar">
       <!-- Logo -->
       <img src="/images-DEV-EV/logo.png" class="logo" alt="logo" />
-      <hr>
+      <hr />
 
       <!-- Menu Principal -->
       <nav class="menu-section">
@@ -39,7 +39,10 @@
         </a>
 
         <a href="/pages/manutencao-preventiva.html" class="nav-manut-prev">
-          <img src="/images-DEV-EV/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA" />
+          <img
+            src="/images-DEV-EV/icone-4.png"
+            alt="ICONE MANUTENÇÃO PREVENTIVA"
+          />
           <span>Manutenção Preventiva</span>
         </a>
       </nav>
@@ -49,7 +52,7 @@
         <a href="/pages/perfil.html" class="nav-perfil">
           <div class="avatar">
             <img src="/images-DEV-EV/icone-5.png" alt="Avatar" />
-               <!-- ESPERANDO BACKEND -->
+            <!-- ESPERANDO BACKEND -->
             <span class="nome-paciente">Rafaela Lima</span>
           </div>
         </a>
@@ -59,230 +62,252 @@
       </div>
     </aside>
 
-
     <!-- CONTEÚDO PRINCIPAL -->
     <div class="conteudo-principal">
-    <!--TOPO DA PÁGINA-->
-        <div class="main-top">
-            <span>Dashboard</span>
-            <a href="/pages/Cadastro_equipamentos.html" class="bt-novo-equipamento">Novo Equipamento</a>
+      <!--TOPO DA PÁGINA-->
+      <div class="main-top">
+        <span>Dashboard</span>
+        <a href="/pages/Cadastro_equipamentos.html" class="bt-novo-equipamento"
+          >Novo Equipamento</a
+        >
+      </div>
+
+      <!-- INDICADORES DOS EQUIPAMENTOS -->
+      <div class="indicadores-equipamentos">
+        <div class="total-equipamentos">
+          <span class="titulo-indicador">TOTAL DE EQUIPAMENTOS</span>
+          <!-- ESPERANDO BACKEND -->
+          <span class="valor-indicador">150</span>
         </div>
 
-
-
-
-         <!-- INDICADORES DOS EQUIPAMENTOS -->
-    <div class="indicadores-equipamentos">
-      <div class="total-equipamentos">
-        <span class="titulo-indicador">TOTAL DE EQUIPAMENTOS</span>
-        <!-- ESPERANDO BACKEND -->
-        <span class="valor-indicador">150</span>
-      </div>
-
-      <div class="criticos">
-        <span class="titulo-indicador">CRÍTICOS</span>
-        <!-- ESPERANDO BACKEND -->
-        <span class="valor-indicador">16</span>
-        <span>Requerem ação imediata</span>
-      </div>
-
-      <div class="em-reparo">
-        <span class="titulo-indicador">EM REPARO</span>
-        <!-- ESPERANDO BACKEND -->
-        <span class="valor-indicador">10</span>
-        <span>Manutenção sendo feita</span>
-      </div>
-
-      <div class="conformidade">
-        <span class="titulo-indicador">CONFORMIDADE</span>
-        <!-- ESPERANDO BACKEND -->
-        <span class="valor-indicador">85%</span>
-      </div>
-    </div>
-
-
-
-    <!-- ALERTA DE CRITICIDADE E INDICADORES DE DESEMPENHO -->
-    <div class="conteiner-indic-alert">
-      <div class="alertas-criticidade">
-        <div class="topo-conteiner">
-          <div class="nome-conteiner">
-            <img src="/images-DEV-EV/icone-7.png" alt="ICON ALERTA" />
-            <span>Alertas de Criticidade</span>
-          </div>
-
-          <a href="/pages/equipamentos.html" class="bt-ver-todos">Ver todos</a>
+        <div class="criticos">
+          <span class="titulo-indicador">CRÍTICOS</span>
+          <!-- ESPERANDO BACKEND -->
+          <span class="valor-indicador">16</span>
+          <span>Requerem ação imediata</span>
         </div>
 
-        <div class="lista-alertas">
-          <div class="item-alerta">
-            <div class="alerta-info">
-              <img src="/images-DEV-EV/icone-8.png" alt="icone bolinha vermelha" />
-              <div class="alerta-texto">
-                <strong>Monitor Multiparamétrico</strong>
-                <span>SN ABC24040015 • Leito 3</span>
-              </div>
-            </div>
-            <span class="badge vermelho">A</span>
-          </div>
+        <div class="em-reparo">
+          <span class="titulo-indicador">EM REPARO</span>
+          <!-- ESPERANDO BACKEND -->
+          <span class="valor-indicador">10</span>
+          <span>Manutenção sendo feita</span>
+        </div>
 
-          <div class="item-alerta">
-            <div class="alerta-info">
-              <img src="/images-DEV-EV/icone-9.png" alt="icone bolinha amarela" />
-              <div class="alerta-texto">
-                <strong>Monitor Multiparamétrico</strong>
-                <span>SN ABC24040015 • Leito 3</span>
-              </div>
-            </div>
-            <span class="badge amarelo">B</span>
-          </div>
-
-          <div class="item-alerta">
-            <div class="alerta-info">
-              <img src="/images-DEV-EV/icone-10.png" alt="icone bolinha azul" />
-              <div class="alerta-texto">
-                <strong>Monitor Multiparamétrico</strong>
-                <span>SN ABC24040015 • Leito 3</span>
-              </div>
-            </div>
-            <span class="badge azul">C</span>
-          </div>
+        <div class="conformidade">
+          <span class="titulo-indicador">CONFORMIDADE</span>
+          <!-- ESPERANDO BACKEND -->
+          <span class="valor-indicador">85%</span>
         </div>
       </div>
 
-      <div class="indicadores-desempenho">
-        <div class="nome-conteiner">
-          <img src="/images-DEV-EV/icone-11.png" alt="ICON INDICADOR" />
-          <span>Indicadores de Desempenho</span>
-        </div>
-
-        <!-- Seção dos 3 Cards de Resumo -->
-        <div class="cards-resumo">
-          <div class="card-resumo inativo">
-             <!-- ESPERANDO BACKEND -->
-            <span class="numero">8</span>
-            <span class="legenda">EQUIPAMENTOS INATIVOS</span>
-          </div>
-
-           <!-- ESPERANDO BACKEND -->
-          <div class="card-resumo ativo">
-            <span class="numero">142</span>
-            <span class="legenda">EQUIPAMENTOS ATIVOS</span>
-          </div>
-
-           <!-- ESPERANDO BACKEND -->
-          <div class="card-resumo abertos">
-            <span class="numero">12</span>
-            <span class="legenda">CHAMADOS ABERTOS</span>
-          </div>
-        </div>
-
-
-         <!-- Seção das Barras de Progresso -->
-    <div class="barras-progresso">
-        
-        <!-- Barra 1: Azul -->
-        <div class="barra-item">
-            <div class="barra-info">
-                <span>Ordens abertas e resolvidas</span>
-                 <!-- ESPERANDO BACKEND -->
-                <span>87%</span>
-            </div>
-             <!-- ESPERANDO BACKEND -->
-            <div class="barra-trilha">
-                <div class="barra-preenchimento azul" style="width: 87%;"></div>
-            </div>
-        </div>
-
-        <!-- Barra 2: Amarelo/Laranja -->
-        <div class="barra-item">
-            <div class="barra-info">
-                <span>Manutenções preventivas realizadas</span>
-                 <!-- ESPERANDO BACKEND -->
-                <span>50%</span>
-            </div>
-            <div class="barra-trilha">
-                 <!-- ESPERANDO BACKEND -->
-                <div class="barra-preenchimento amarelo" style="width: 50%;"></div>
-            </div>
-        </div>
-
-        <!-- Barra 3: Vermelho -->
-        <div class="barra-item">
-            <div class="barra-info">
-                <span>Equipamentos críticos ativos</span>
-                 <!-- ESPERANDO BACKEND -->
-                <span>30%</span>
-            </div>
-            <div class="barra-trilha">
-                 <!-- ESPERANDO BACKEND -->
-                <div class="barra-preenchimento vermelho" style="width: 30%;"></div>
-            </div>
-        </div>
-      </div>
-  </div> 
-</div>
-
-
-
-    <!-- ORDENS DE SERVIÇO -->
-    <div class="ordens-servico">
-        <div class="topo-conteiner-2">
+      <!-- ALERTA DE CRITICIDADE E INDICADORES DE DESEMPENHO -->
+      <div class="conteiner-indic-alert">
+        <div class="alertas-criticidade">
+          <div class="topo-conteiner">
             <div class="nome-conteiner">
-                <img src="/images-DEV-EV/icone-12.png" alt="ICON SERVIÇO" />
-                <span>Ordens de Serviço</span>
-             </div>
+              <img src="/images-DEV-EV/icone-7.png" alt="ICON ALERTA" />
+              <span>Alertas de Criticidade</span>
+            </div>
 
-            <a href="/pages/ordens-servico.html" class="bt-ver-todos">Ver todos</a>
+            <a href="/pages/equipamentos.html" class="bt-ver-todos"
+              >Ver todos</a
+            >
+          </div>
+
+          <div class="lista-alertas">
+            <div class="item-alerta">
+              <div class="alerta-info">
+                <img
+                  src="/images-DEV-EV/icone-8.png"
+                  alt="icone bolinha vermelha"
+                />
+                <div class="alerta-texto">
+                  <strong>Monitor Multiparamétrico</strong>
+                  <span>SN ABC24040015 • Leito 3</span>
+                </div>
+              </div>
+              <span class="badge vermelho">A</span>
+            </div>
+
+            <div class="item-alerta">
+              <div class="alerta-info">
+                <img
+                  src="/images-DEV-EV/icone-9.png"
+                  alt="icone bolinha amarela"
+                />
+                <div class="alerta-texto">
+                  <strong>Monitor Multiparamétrico</strong>
+                  <span>SN ABC24040015 • Leito 3</span>
+                </div>
+              </div>
+              <span class="badge amarelo">B</span>
+            </div>
+
+            <div class="item-alerta">
+              <div class="alerta-info">
+                <img
+                  src="/images-DEV-EV/icone-10.png"
+                  alt="icone bolinha azul"
+                />
+                <div class="alerta-texto">
+                  <strong>Monitor Multiparamétrico</strong>
+                  <span>SN ABC24040015 • Leito 3</span>
+                </div>
+              </div>
+              <span class="badge azul">C</span>
+            </div>
+          </div>
         </div>
 
-         <!-- Tabela de Ordens -->
-         <table class="tabela-ordens">
-            <thead>
-                <tr>
-                <th>OS</th>
-                <th>EQUIPAMENTO</th>
-                <th>SETOR</th>
-                <th>CRITICIDADE</th>
-                <th>STATUS</th>
-                <th>ABERTURA</th>
-                <th>AÇÃO</th>
-                </tr>
-            </thead>
+        <div class="indicadores-desempenho">
+          <div class="nome-conteiner">
+            <img src="/images-DEV-EV/icone-11.png" alt="ICON INDICADOR" />
+            <span>Indicadores de Desempenho</span>
+          </div>
+
+          <!-- Seção dos 3 Cards de Resumo -->
+          <div class="cards-resumo">
+            <div class="card-resumo inativo">
+              <!-- ESPERANDO BACKEND -->
+              <span class="numero">8</span>
+              <span class="legenda">EQUIPAMENTOS INATIVOS</span>
+            </div>
 
             <!-- ESPERANDO BACKEND -->
-            <tbody>
+            <div class="card-resumo ativo">
+              <span class="numero">142</span>
+              <span class="legenda">EQUIPAMENTOS ATIVOS</span>
+            </div>
+
+            <!-- ESPERANDO BACKEND -->
+            <div class="card-resumo abertos">
+              <span class="numero">12</span>
+              <span class="legenda">CHAMADOS ABERTOS</span>
+            </div>
+          </div>
+
+          <!-- Seção das Barras de Progresso -->
+          <div class="barras-progresso">
+            <!-- Barra 1: Azul -->
+            <div class="barra-item">
+              <div class="barra-info">
+                <span>Ordens abertas e resolvidas</span>
+                <!-- ESPERANDO BACKEND -->
+                <span>87%</span>
+              </div>
+              <!-- ESPERANDO BACKEND -->
+              <div class="barra-trilha">
+                <div class="barra-preenchimento azul" style="width: 87%"></div>
+              </div>
+            </div>
+
+            <!-- Barra 2: Amarelo/Laranja -->
+            <div class="barra-item">
+              <div class="barra-info">
+                <span>Manutenções preventivas realizadas</span>
+                <!-- ESPERANDO BACKEND -->
+                <span>50%</span>
+              </div>
+              <div class="barra-trilha">
+                <!-- ESPERANDO BACKEND -->
+                <div
+                  class="barra-preenchimento amarelo"
+                  style="width: 50%"
+                ></div>
+              </div>
+            </div>
+
+            <!-- Barra 3: Vermelho -->
+            <div class="barra-item">
+              <div class="barra-info">
+                <span>Equipamentos críticos ativos</span>
+                <!-- ESPERANDO BACKEND -->
+                <span>30%</span>
+              </div>
+              <div class="barra-trilha">
+                <!-- ESPERANDO BACKEND -->
+                <div
+                  class="barra-preenchimento vermelho"
+                  style="width: 30%"
+                ></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ORDENS DE SERVIÇO -->
+      <div class="ordens-servico">
+        <div class="topo-conteiner-2">
+          <div class="nome-conteiner">
+            <img src="/images-DEV-EV/icone-12.png" alt="ICON SERVIÇO" />
+            <span>Ordens de Serviço</span>
+          </div>
+
+          <a href="/pages/ordens-servico.html" class="bt-ver-todos"
+            >Ver todos</a
+          >
+        </div>
+
+        <!-- Tabela de Ordens -->
+        <table class="tabela-ordens">
+          <thead>
+            <tr>
+              <th>OS</th>
+              <th>EQUIPAMENTO</th>
+              <th>SETOR</th>
+              <th>CRITICIDADE</th>
+              <th>STATUS</th>
+              <th>ABERTURA</th>
+              <th>AÇÃO</th>
+            </tr>
+          </thead>
+
+          <!-- ESPERANDO BACKEND -->
+          <tbody>
             <!-- Linha 1 -->
             <tr>
               <!-- ESPERANDO BACKEND -->
-                <td> <span class="coluna-os">#OS-2025-089</span></td>
-                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
-                <td>UTI Adulto</td>
-                <td><span class="badge-criticidade vermelho">A</span></td>
-                <td><span class="badge-status vermelho">Corrigir</span></td>
-                <td>06/01/26</td>
-                <!-- ESPERANDO BACKEND -->
-                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+              <td><span class="coluna-os">#OS-2025-089</span></td>
+              <td>
+                <span class="coluna-EQ">Ventilador Mecânico VX-3000</span>
+              </td>
+              <td>UTI Adulto</td>
+              <td><span class="badge-criticidade vermelho">A</span></td>
+              <td><span class="badge-status vermelho">Corrigir</span></td>
+              <td>06/01/26</td>
+              <!-- ESPERANDO BACKEND -->
+              <td>
+                <a href="/pages/manutencao-corretiva.html" class="btn-executar"
+                  >Executar</a
+                >
+              </td>
             </tr>
 
             <!-- Linha 2 -->
             <tr>
               <!-- ESPERANDO BACKEND -->
-                <td> <span class="coluna-os">#OS-2025-089</span></td>
-                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
-                <td>UTI Adulto</td>
-                <td><span class="badge-criticidade amarelo">B</span></td>
-                <td><span class="badge-status amarelo">Em reparo</span></td>
-                <td>06/01/26</td>
-                 <!-- ESPERANDO BACKEND -->
-                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+              <td><span class="coluna-os">#OS-2025-089</span></td>
+              <td>
+                <span class="coluna-EQ">Ventilador Mecânico VX-3000</span>
+              </td>
+              <td>UTI Adulto</td>
+              <td><span class="badge-criticidade amarelo">B</span></td>
+              <td><span class="badge-status amarelo">Em reparo</span></td>
+              <td>06/01/26</td>
+              <!-- ESPERANDO BACKEND -->
+              <td>
+                <a href="/pages/manutencao-corretiva.html" class="btn-executar"
+                  >Executar</a
+                >
+              </td>
             </tr>
-            </tbody>
+          </tbody>
         </table>
-    </div>   
-
-  </div>
-  <script src="/js/api.js"></script>
-  <script src="/js/dashboard.js"></script>
+      </div>
+    </div>
+    <script src="/js/api.js"></script>
+    <script src="/js/dashboard.js"></script>
   </body>
 </html>
