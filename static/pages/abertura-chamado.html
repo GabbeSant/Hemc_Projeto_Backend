@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hemec | Abrir chamado</title>
+    <link rel="stylesheet" href="/css/abertura-chamado.css" />
+  </head>
+  <body>
+    <!-- MENU -->
+
+    <aside class="sidebar">
+      <!-- Logo -->
+      <img src="/images-DEV-EV/logo.png" class="logo" alt="logo" />
+      <hr />
+
+      <!-- Menu Principal -->
+      <nav class="menu-section">
+        <span>PRINCIPAL</span>
+
+        <a href="/pages/dashboard.html" class="nav-dashboard">
+          <img src="/images-DEV-EV/icone-1.png" alt="ICONE DASHBOARD" />
+          <span>Dashboad</span>
+        </a>
+
+        <a href="/pages/equipamentos.html" class="nav-equipamentos">
+          <img src="/images-DEV-EV/icone-2.png" alt="ICONE EQUIPAMENTOS" />
+          <span>Equipamentos</span>
+        </a>
+      </nav>
+
+      <!-- Menu Manutenção -->
+      <nav class="menu-section" class="nav-manutencao">
+        <span>MANUTENÇÃO</span>
+
+        <a href="/pages/ordens-servico.html" class="nav-ordens-servico">
+          <img src="/images-DEV-EV/icone-3.png" alt="ICONE ORDENS DE SERVIÇO" />
+          <span>Ordens de Serviço</span>
+        </a>
+
+        <a href="/pages/manutencao-preventiva.html" class="nav-manut-prev">
+          <img
+            src="/images-DEV-EV/icone-4.png"
+            alt="ICONE MANUTENÇÃO PREVENTIVA"
+          />
+          <span>Manutenção Preventiva</span>
+        </a>
+      </nav>
+
+      <!-- Footer do Usuário -->
+      <div class="sidebar-footer">
+        <a href="/pages/perfil.html" class="nav-perfil">
+          <div class="avatar">
+            <img src="/images-DEV-EV/icone-5.png" alt="Avatar" />
+            <!-- ESPERANDO BACKEND -->
+            <span class="nome-paciente">Rafaela Lima</span>
+          </div>
+        </a>
+        <a href="#" class="bt-navegacao" onclick="fazerLogout(event)">
+          <img src="/images-DEV-EV/icone-6.png" alt="IMAGEM DE SAIR" />
+        </a>
+      </div>
+    </aside>
+
+    <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+      <!--TOPO DA PÁGINA-->
+      <div class="main-top">
+        <span>Abertura de Chamado</span>
+        <a href="/pages/Cadastro_equipamentos.html" class="bt-novo-equipamento"
+          >Novo Equipamento</a
+        >
+      </div>
+
+      <!-- CONTEINER DA ABERTURA -->
+      <!-- ESPERANDO BACKEND -->
+      <form
+        class="conteiner-abertura"
+        action="/api/abrir-chamado"
+        method="POST"
+      >
+        <!-- Badge da OS -->
+        <span class="os-badge">#OS-2025-089</span>
+
+        <!-- Linha 1: Equipamento e Setor -->
+        <div class="form-row">
+          <div class="form-group">
+            <label>EQUIPAMENTO</label>
+
+            <!-- ESPERANDO BACKEND -->
+            <select
+              class="select-custom"
+              id="equipamento"
+              name="equipamento"
+              required
+            >
+              <option>Ventilador Mecânico VX-3000</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>SETOR</label>
+
+            <!-- ESPERANDO BACKEND -->
+            <select class="select-custom" id="setor" name="setor" required>
+              <option>UTI Adulto</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Linha 2: Criticidade -->
+        <div class="form-group">
+          <label>CRITICIDADE DO CHAMADO</label>
+          <div class="criticidade-options">
+            <!-- ESPERANDO BACKEND -->
+            <button
+              type="button"
+              class="criticidade-option option-a"
+              data-valor="A"
+            >
+              A
+            </button>
+
+            <!-- ESPERANDO BACKEND -->
+            <button
+              type="button"
+              class="criticidade-option option-b"
+              data-valor="B"
+            >
+              B
+            </button>
+
+            <!-- ESPERANDO BACKEND -->
+            <button
+              type="button"
+              class="criticidade-option option-c"
+              data-valor="C"
+            >
+              C
+            </button>
+          </div>
+        </div>
+
+        <!-- Linha 3: Descrição -->
+        <div class="form-group">
+          <label>DESCRIÇÃO DO PROBLEMA</label>
+          <textarea
+            class="textarea-problema"
+            id="descricao"
+            name="descricao"
+            placeholder="Descreva o problema"
+          ></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn-registrar">
+            <span>Registrar Chamado</span>
+          </button>
+        </div>
+      </form>
+    </div>
+  <script src="/js/api.js"></script>
+  <script src="/js/abertura-chamado.js"></script>
+  </body>
+</html>

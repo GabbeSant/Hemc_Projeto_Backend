@@ -1,0 +1,444 @@
+/* =========================================
+   1. FONTES E RESET
+   ========================================= */
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url("/fonts/Montserrat-Light.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url("/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: url("/fonts/Montserrat-Medium.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat-Regular", sans-serif;
+    background-color: #F3F9FC;
+}
+
+/* =========================================
+   2. MENU LATERAL
+   ========================================= */
+
+.sidebar {
+    background-color: #0F1B65;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+    width: 18%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 130px;
+    height: 54px;
+    margin-bottom: 8px;
+}
+
+.sidebar hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin: 24px 0;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 60px;
+}
+
+.menu-section > span {
+    color: #B5B5B5;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-left: 12px;
+}
+
+.menu-section a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.menu-section a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-section a img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin-top: auto;
+}
+
+.nav-perfil {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex: 1;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.nome-paciente {
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 13px;
+}
+
+.bt-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.bt-navegacao img {
+    width: 22px;
+    height: 22px;
+}
+
+/* =========================================
+   3. CONTEÚDO PRINCIPAL
+   ========================================= */
+
+.conteudo-principal {
+    margin-left: 18%;
+    padding: 24px;
+    background-color: #F3F9FC;
+    min-height: 100vh;
+}
+
+/* =========================================
+   4. TOPO DA PÁGINA
+   ========================================= */
+
+.main-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.main-top > span {
+    font-family: "Inter";
+    font-size: 20px;
+    color: #0F1B65;
+}
+
+.bt-novo-equipamento {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    padding: 10px 16px;
+    background-color: #2155FC;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+}
+
+.bt-novo-equipamento:hover {
+    background-color: #1E48E0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
+}
+
+/* =========================================
+   5. CONTAINER DO FORMULÁRIO
+   ========================================= */
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-section {
+    background-color: #ffffff;
+    border-radius: 12px;
+    border: 1px solid #DDE6EF;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-section-title {
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 14px;
+    color: #0F1B65;
+    padding-bottom: 12px;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+/* Grid de inputs */
+.form-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group-full {
+    grid-column: 1 / -1;
+}
+
+.form-group label {
+    font-size: 12px;
+    color: #64748b;
+    font-family: "Montserrat-Regular";
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+    padding: 10px 14px;
+    border: 1px solid #DDE6EF;
+    border-radius: 8px;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 13px;
+    color: #0F1B65;
+    background-color: #F8FAFC;
+    transition: border-color 0.2s, background-color 0.2s;
+    outline: none;
+    width: 100%;
+}
+
+.form-group select {
+    cursor: pointer;
+    appearance: none;
+    -webkit-appearance: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
+    background-repeat: no-repeat;
+    background-position: right 12px center;
+    padding-right: 36px;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 80px;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+    border-color: #2155FC;
+    background-color: #ffffff;
+}
+
+/* =========================================
+   6. CARDS DE CRITICIDADE
+   ========================================= */
+
+.cards-radio {
+    display: flex;
+    gap: 16px;
+}
+
+.radio-card {
+    flex: 1;
+    cursor: pointer;
+}
+
+.radio-card input[type="radio"] {
+    display: none;
+}
+
+.radio-card-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px 16px;
+    border: 2px solid #DDE6EF;
+    border-radius: 12px;
+    text-align: center;
+    transition: all 0.2s;
+    cursor: pointer;
+}
+
+.radio-card-content:hover {
+    border-color: #2155FC;
+}
+
+.badge-letra {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter";
+    font-size: 16px;
+    color: #ffffff;
+}
+
+.radio-card-content.vermelho .badge-letra { background-color: #EF4444; }
+.radio-card-content.amarelo .badge-letra { background-color: #F59E0B; }
+.radio-card-content.azul    .badge-letra { background-color: #2563EB; }
+
+.radio-card input[type="radio"]:checked + .radio-card-content.vermelho {
+    border-color: #EF4444;
+    background-color: #FEF2F2;
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content.amarelo {
+    border-color: #F59E0B;
+    background-color: #FFFBEB;
+}
+
+.radio-card input[type="radio"]:checked + .radio-card-content.azul {
+    border-color: #2563EB;
+    background-color: #EFF6FF;
+}
+
+.card-titulo {
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    color: #0F1B65;
+}
+
+.card-desc {
+    font-size: 11px;
+    color: #64748b;
+}
+
+/* =========================================
+   7. CARDS DE FREQUÊNCIA
+   ========================================= */
+
+.frequency-grid {
+    display: flex;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.radio-freq {
+    cursor: pointer;
+}
+
+.radio-freq input[type="radio"] {
+    display: none;
+}
+
+.freq-card {
+    padding: 10px 24px;
+    border: 1px solid #DDE6EF;
+    border-radius: 8px;
+    font-size: 13px;
+    color: #0F1B65;
+    background-color: #F8FAFC;
+    transition: all 0.2s;
+    white-space: nowrap;
+    cursor: pointer;
+}
+
+.radio-freq input[type="radio"]:checked + .freq-card {
+    border-color: #2155FC;
+    background-color: #EFF4FF;
+    color: #2155FC;
+    font-family: "Montserrat-Medium";
+}
+
+.freq-card:hover {
+    border-color: #2155FC;
+}
+
+/* =========================================
+   8. AÇÕES DO FORMULÁRIO
+   ========================================= */
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+}
+
+.btn-cancelar {
+    text-decoration: none;
+    color: #0F1B65;
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    padding: 12px 20px;
+    border: 1px solid #DDE6EF;
+    border-radius: 6px;
+    background-color: #ffffff;
+    transition: background-color 0.2s;
+}
+
+.btn-cancelar:hover {
+    background-color: #F1F5F9;
+}
+
+.btn-salvar {
+    color: #ffffff;
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    padding: 12px 20px;
+    background-color: #2155FC;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-salvar:hover {
+    background-color: #1E48E0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
+}

@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hemec | Ordens de Serviço</title>
+    <link rel="stylesheet" href="/css/ordens-servico.css">
+</head>
+<body>
+    <!-- MENU -->
+
+    <aside class="sidebar">
+      <!-- Logo -->
+      <img src="/images-DEV-EV/logo.png" class="logo" alt="logo" />
+      <hr>
+
+      <!-- Menu Principal -->
+      <nav class="menu-section">
+        <span>PRINCIPAL</span>
+
+        <a href="/pages/dashboard.html" class="nav-dashboard">
+          <img src="/images-DEV-EV/icone-1.png" alt="ICONE DASHBOARD" />
+          <span>Dashboad</span>
+        </a>
+
+        <a href="/pages/equipamentos.html" class="nav-equipamentos">
+          <img src="/images-DEV-EV/icone-2.png" alt="ICONE EQUIPAMENTOS" />
+          <span>Equipamentos</span>
+        </a>
+      </nav>
+
+      <!-- Menu Manutenção -->
+      <nav class="menu-section" class="nav-manutencao">
+        <span>MANUTENÇÃO</span>
+
+        <a href="#" class="nav-ordens-servico">
+          <img src="/images-DEV-EV/icone-3.png" alt="ICONE ORDENS DE SERVIÇO" />
+          <span>Ordens de Serviço</span>
+        </a>
+
+        <a href="/pages/manutencao-preventiva.html" class="nav-manut-prev">
+          <img src="/images-DEV-EV/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA" />
+          <span>Manutenção Preventiva</span>
+        </a>
+      </nav>
+
+      <!-- Footer do Usuário -->
+      <div class="sidebar-footer">
+        <a href="/pages/perfil.html" class="nav-perfil">
+          <div class="avatar">
+            <img src="/images-DEV-EV/icone-5.png" alt="Avatar" />
+               <!-- ESPERANDO BACKEND -->
+            <span class="nome-paciente">Rafaela Lima</span>
+          </div>
+        </a>
+        <a href="#" class="bt-navegacao" onclick="fazerLogout(event)">
+          <img src="/images-DEV-EV/icone-6.png" alt="IMAGEM DE SAIR" />
+        </a>
+      </div>
+    </aside>
+
+
+     <!-- CONTEÚDO PRINCIPAL -->
+    <div class="conteudo-principal">
+    <!--TOPO DA PÁGINA-->
+        <div class="main-top">
+            <span>Ordens de Serviço</span>
+            <a href="/pages/Cadastro_equipamentos.html" class="bt-novo-equipamento">Novo Equipamento</a>
+        </div>
+
+
+
+     
+         <!-- INDICADORES DOS CHAMADOS -->
+    <div class="indicadores-chamados">
+      <div class="total-chamados">
+        <span class="titulo-indicador">TOTAL DE CHAMADOS</span>
+        <!-- ESPERANDO BACKEND -->
+        <span class="valor-indicador">21</span>
+      </div>  
+      
+      
+      <div class="criticos">
+        <span class="titulo-indicador">EQUIPAMENTOS CRÍTICOS</span>
+        <!-- ESPERANDO BACKEND -->
+        <span class="valor-indicador">16</span>
+        <span>Requerem ação imediata</span>
+      </div>
+
+
+      <div class="chamados-concluidos">
+        <span class="titulo-indicador">CHAMADOS CONCLUÍDOS</span>
+        <!-- ESPERANDO BACKEND -->
+        <span class="valor-indicador">5</span>
+      </div> 
+    </div>
+
+
+
+
+    <!-- TABELA DE ORDENS DE SERVIÇO -->
+    <div class="ordens-servico">
+         <table class="tabela-ordens">
+            <thead>
+                <tr>
+                <th>OS</th>
+                <th>EQUIPAMENTO</th>
+                <th>SETOR</th>
+                <th>CRITICIDADE</th>
+                <th>STATUS</th>
+                <th>ABERTURA</th>
+                <th>AÇÃO</th>
+                </tr>
+            </thead>
+
+            <!-- ESPERANDO BACKEND -->
+            <tbody>
+            <!-- Linha 1 -->
+            <tr>
+              <!-- ESPERANDO BACKEND -->
+                <td> <span class="coluna-os">#OS-2025-089</span></td>
+                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
+                <td>UTI Adulto</td>
+                <td><span class="badge-criticidade vermelho">A</span></td>
+                  <!-- ESPERANDO BACKEND -->
+                <td><span class="badge-status vermelho">Corrigir</span></td>
+                <td>06/01/26</td>
+                <!-- ESPERANDO BACKEND -->
+                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+            </tr>
+
+            <!-- Linha 2 -->
+             <tr>
+              <!-- ESPERANDO BACKEND -->
+                <td> <span class="coluna-os">#OS-2025-089</span></td>
+                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
+                <td>UTI Adulto</td>
+                <td><span class="badge-criticidade vermelho">A</span></td>
+                  <!-- ESPERANDO BACKEND -->
+                <td><span class="badge-status vermelho">Corrigir</span></td>
+                <td>06/01/26</td>
+                <!-- ESPERANDO BACKEND -->
+                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+            </tr>
+
+            <!-- Linha 3 -->
+             <tr>
+              <!-- ESPERANDO BACKEND -->
+                <td> <span class="coluna-os">#OS-2025-089</span></td>
+                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
+                <td>UTI Adulto</td>
+                <td><span class="badge-criticidade vermelho">A</span></td>
+                  <!-- ESPERANDO BACKEND -->
+                <td><span class="badge-status verde">Concluído</span></td>
+                <td>06/01/26</td>
+                <!-- ESPERANDO BACKEND -->
+                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+            </tr>
+
+            <!-- Linha 4 -->
+            <tr>
+              <!-- ESPERANDO BACKEND -->
+                <td> <span class="coluna-os">#OS-2025-089</span></td>
+                <td> <span class="coluna-EQ">Ventilador Mecânico VX-3000</span></td>
+                <td>UTI Adulto</td>
+                <td><span class="badge-criticidade amarelo">B</span></td>
+                  <!-- ESPERANDO BACKEND -->
+                <td><span class="badge-status amarelo">Em reparo</span></td>
+                <td>06/01/26</td>
+                 <!-- ESPERANDO BACKEND -->
+                <td><a href="/pages/manutencao-corretiva.html" class="btn-executar">Executar</a></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>   
+
+
+
+
+    <!-- BOTÃO ABRIR CHAMADO -->
+     <div class="btn-chamado-container">
+        <a href="/pages/abertura-chamado.html" class="btn-chamado">+ Abrir chamado</a>
+    </div>
+    </div>
+  <script src="/js/api.js"></script>
+  <script src="/js/ordens-servico.js"></script>
+</body>
+</html>

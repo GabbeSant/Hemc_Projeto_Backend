@@ -1,0 +1,392 @@
+/* =========================================
+   1. CONFIGURAÇÕES GERAIS E FONTES
+   ========================================= */
+
+@font-face {
+  font-family: "Inter";
+  src: url("/fonts/Inter_18pt-Bold.ttf");
+}   
+
+@font-face {
+  font-family: "Montserrat-Light";
+  src: url("/fonts/Montserrat-Light.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Regular";
+  src: url("/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+  font-family: "Montserrat-Medium";
+  src: url("/fonts/Montserrat-Medium.ttf");
+}
+
+
+*{
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    font-family: "Montserrat-Regular", sans-serif;
+}
+
+
+/* =========================================
+   2. MENU LATERAL
+   ========================================= */
+
+.sidebar {
+    background-color: #0F1B65;
+    display: flex;
+    flex-direction: column;
+    padding: 24px 24px;
+    height: 100vh;
+    width: 18%;
+    justify-content: space-between;
+
+     /* ADICIONE ISSO AQUI: */
+    box-sizing: border-box; 
+
+    /* ADICIONE ISSO: */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 130px;
+    height: 54px;
+    margin-bottom: 8px;
+}
+
+.sidebar hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin: 24px 0;
+}
+
+/* Seções do Menu */
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 60px;
+}
+
+.menu-section > span {
+    color: #B5B5B5;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-left: 12px;
+}
+
+/* Links de Navegação */
+.menu-section a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px;
+    transition: all 0.3s ease;
+
+&:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+}
+
+img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+}
+
+
+/* Item Ativo*/
+.nav-ordens-servico{
+    background-color: #1734A8 !important;
+    color: #ffffff !important;
+}
+
+
+
+/* Footer do Usuário */
+.sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin-top: auto;
+
+
+.nav-perfil {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex: 1;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 25px;
+}
+
+img {
+    width: 50px;
+    height: 50px;
+
+}
+
+.nome-paciente {
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.bt-navegacao{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    background: none;
+    border: none;
+
+    img {
+    width: 25px;
+    height: 25px;
+}
+
+}
+}
+
+
+
+
+
+
+
+/* =========================================
+   2. CONFIGURAÇÃO CONTEÚDO PRINCIPAL
+   ========================================= */
+
+.conteudo-principal {
+    margin-left: 18%; /* Empurra tudo para o lado uma só vez */
+    padding: 24px;    /* Espaço interno geral */
+    background-color: #F3F9FC;
+    min-height: 100vh; /* Garante que o fundo vá até o fim */
+}
+
+
+
+
+
+
+/* =========================================
+   3. MENU SUPERIOR
+   ========================================= */
+
+.main-top{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+
+    span{
+        font-family: "Inter";
+        font-size: 20px;
+        color: #0F1B65;
+    }
+
+    .bt-novo-equipamento{
+        text-decoration: none;
+        color: #ffffff;
+        font-family: "Montserrat-Medium";
+        font-size: 13px;
+        padding: 10px;
+        background-color: #2155FC;
+        border-radius: 6px;
+
+    &:hover{
+    background-color: #1E48E0;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
+    }
+    }
+}
+
+
+/* =========================================
+   4. CONTEINER DO CHAMADO
+   ========================================= */
+.conteiner-abertura {
+    background-color: #ffffff;
+    border: 1px solid #DDE6EF;
+    border-radius: 12px;
+    padding: 32px;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Espaço entre as seções */
+}
+
+/* Badge da OS (Topo esquerdo) */
+.os-badge {
+    background-color: #DBEAFE; /* Azul bem claro */
+    color: #2563EB; /* Azul */
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 9px;
+    padding: 6px 12px;
+    border-radius: 6px;
+    width: fit-content;
+    margin-bottom: 8px;
+}
+
+
+label {
+    display: block;
+    font-size: 10px;
+    color: #0F1B65;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Layout da Linha (Equipamento e Setor lado a lado) */
+.form-row {
+    display: flex;
+    gap: 16px;
+}
+
+.form-group {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Estilo dos Selects e Inputs */
+.select-custom {
+    width: 100%;
+    padding: 14px 16px;
+    background-color: #F3F9FC; 
+    border: 1px solid #DDE6EF;
+    border-radius: 8px;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 12px;
+    color: #0F1B65;
+    appearance: none; /* Remove a seta padrão do navegador */
+    cursor: pointer;
+    outline: none;
+}
+
+/*seta */
+.select-custom {
+    background-image: url("/images-DEV-EV/icone-14.png");
+    background-repeat: no-repeat;
+    background-position: right 16px top 50%;
+    background-size: 18px auto;
+}
+
+/* Área de Criticidade */
+.criticidade-options {
+    display: flex;
+    gap: 12px;
+}
+
+.criticidade-option {
+    flex: 1;
+    padding: 14px;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    background-color: #ffffff;
+    font-family: "Inter", sans-serif;
+    font-size: 18px;
+}
+
+/* Estado Selecionado (A - Vermelho) */
+.option-a {
+    color: #DC2626;
+
+&:active{
+    background-color: #F9E9E8;
+    border: 2px solid #DC2626;
+    transition: 5ms;
+}
+}
+
+/* Opção B (Amarelo) */
+.option-b {
+    color: #F59E0B;
+
+&:active{
+    background-color: #FFEBC9;
+    border: 2px solid #F59E0B;
+    transition: 5ms;
+}
+}
+
+/* Opção C (Verde/Azul) */
+.option-c {
+    color: #2155FC;
+
+&:active{
+    background-color: #d3ddfea1;
+    border: 2px solid #2155FC;
+    transition: 5ms;
+}
+}
+
+/* Textarea de Descrição */
+.textarea-problema {
+    width: 96%;
+    min-height: 120px;
+    padding: 16px;
+    background-color: #F3F9FC;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: "Montserrat-Regular", sans-serif;
+    font-size: 11px;
+    color: #0F1B65;
+    resize: vertical;
+    outline: none;
+    line-height: 1.5;
+}
+
+.textarea-problema::placeholder {
+    color: #94A3B8;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+/* Botão Registrar Chamado */
+.btn-registrar {
+    background-color: #ffffff;
+    color: #2563EB;
+    border: 1px solid #2563EB;
+    padding: 9px 23px;
+    border-radius: 5px;
+    font-family: "Montserrat-Medium", sans-serif;
+    font-size: 11px;
+
+&:hover {
+    background-color: #2155FC;
+    border-color: #2155FC;
+    color: #ffffff;
+}
+}

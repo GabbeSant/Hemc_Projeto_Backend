@@ -1,0 +1,275 @@
+/* =========================================
+   1. FONTES E RESET
+   ========================================= */
+
+@font-face {
+    font-family: "Inter";
+    src: url("/fonts/Inter_18pt-Bold.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Light";
+    src: url("/fonts/Montserrat-Light.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Regular";
+    src: url("/fonts/Montserrat-Regular.ttf");
+}
+
+@font-face {
+    font-family: "Montserrat-Medium";
+    src: url("/fonts/Montserrat-Medium.ttf");
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Montserrat-Regular", sans-serif;
+    background-color: #F3F9FC;
+}
+
+/* =========================================
+   2. MENU LATERAL
+   ========================================= */
+
+.sidebar {
+    background-color: #0F1B65;
+    display: flex;
+    flex-direction: column;
+    padding: 24px;
+    height: 100vh;
+    width: 18%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo {
+    width: 130px;
+    height: 54px;
+    margin-bottom: 8px;
+}
+
+.sidebar hr {
+    border: none;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin: 24px 0;
+}
+
+.menu-section {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    margin-bottom: 60px;
+}
+
+.menu-section > span {
+    color: #B5B5B5;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    padding-left: 12px;
+}
+
+.menu-section a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    color: #ffffff;
+    font-size: 12px;
+    transition: all 0.3s ease;
+}
+
+.menu-section a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.menu-section a img {
+    width: 20px;
+    height: 20px;
+    opacity: 0.8;
+}
+
+.sidebar-footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-top: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.301);
+    margin-top: auto;
+}
+
+.nav-perfil {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    flex: 1;
+}
+
+.avatar {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.nome-paciente {
+    color: #ffffff;
+    font-family: "Inter";
+    font-size: 13px;
+}
+
+.bt-navegacao {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 8px;
+    text-decoration: none;
+}
+
+.bt-navegacao img {
+    width: 22px;
+    height: 22px;
+}
+
+/* =========================================
+   3. CONTEÚDO PRINCIPAL
+   ========================================= */
+
+.conteudo-principal {
+    margin-left: 18%;
+    padding: 24px;
+    background-color: #F3F9FC;
+    min-height: 100vh;
+}
+
+.main-top {
+    display: flex;
+    align-items: center;
+    margin-bottom: 24px;
+}
+
+.main-top > span {
+    font-family: "Inter";
+    font-size: 20px;
+    color: #0F1B65;
+}
+
+/* =========================================
+   4. LAYOUT DO PERFIL
+   ========================================= */
+
+.perfil-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    max-width: 560px;
+}
+
+/* =========================================
+   5. CARD PRINCIPAL (avatar + nome + badge)
+   ========================================= */
+
+.perfil-card {
+    background-color: #ffffff;
+    border: 1px solid #DDE6EF;
+    border-radius: 12px;
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+}
+
+.perfil-avatar {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background-color: #2155FC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: "Inter";
+    font-size: 28px;
+    color: #ffffff;
+    letter-spacing: 1px;
+}
+
+.perfil-nome {
+    font-family: "Inter";
+    font-size: 18px;
+    color: #0F1B65;
+}
+
+.perfil-badge {
+    font-family: "Montserrat-Medium";
+    font-size: 11px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    background-color: #EFF4FF;
+    color: #2155FC;
+    text-transform: capitalize;
+}
+
+/* =========================================
+   6. CARD DE DETALHES
+   ========================================= */
+
+.perfil-detalhes {
+    background-color: #ffffff;
+    border: 1px solid #DDE6EF;
+    border-radius: 12px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.detalhes-titulo {
+    font-family: "Montserrat-Medium";
+    font-size: 14px;
+    color: #0F1B65;
+    padding-bottom: 16px;
+    border-bottom: 1px solid #F1F5F9;
+    margin-bottom: 4px;
+}
+
+.detalhe-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #F1F5F9;
+}
+
+.detalhe-item:last-child {
+    border-bottom: none;
+}
+
+.detalhe-label {
+    font-size: 12px;
+    color: #64748b;
+    font-family: "Montserrat-Regular";
+}
+
+.detalhe-valor {
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    color: #0F1B65;
+}

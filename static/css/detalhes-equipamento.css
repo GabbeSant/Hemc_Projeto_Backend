@@ -1,0 +1,63 @@
+@font-face { font-family: "Inter"; src: url("/fonts/Inter_18pt-Bold.ttf"); }
+@font-face { font-family: "Montserrat-Regular"; src: url("/fonts/Montserrat-Regular.ttf"); }
+@font-face { font-family: "Montserrat-Medium"; src: url("/fonts/Montserrat-Medium.ttf"); }
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: "Montserrat-Regular", sans-serif; }
+
+.sidebar {
+  background-color: #0F1B65; display: flex; flex-direction: column;
+  padding: 24px; height: 100vh; width: 18%;
+  justify-content: space-between; position: fixed; top: 0; left: 0; z-index: 1000;
+}
+.logo { width: 130px; height: 54px; margin-bottom: 8px; }
+.sidebar hr { border: none; border-top: 1px solid rgba(255,255,255,.3); margin: 24px 0; }
+.menu-section { display: flex; flex-direction: column; gap: 4px; margin-bottom: 60px; }
+.menu-section > span { color: #B5B5B5; font-size: 10px; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 8px; padding-left: 12px; }
+.menu-section a { display: flex; align-items: center; gap: 12px; padding: 12px; border-radius: 8px; text-decoration: none; color: #fff; font-size: 12px; }
+.menu-section a:hover { background: rgba(255,255,255,.1); }
+.menu-section a img { width: 20px; height: 20px; opacity: .8; }
+.sidebar-footer { display: flex; align-items: center; justify-content: space-between; padding-top: 16px; border-top: 1px solid rgba(255,255,255,.3); margin-top: auto; }
+.nav-perfil { display: flex; align-items: center; text-decoration: none; flex: 1; }
+.avatar { display: flex; align-items: center; gap: 12px; }
+.avatar img { width: 40px; height: 40px; }
+.nome-paciente { color: #fff; font-family: "Inter"; font-size: 13px; }
+.bt-navegacao img { width: 25px; height: 25px; }
+
+.conteudo-principal { margin-left: 18%; padding: 24px; background-color: #F3F9FC; min-height: 100vh; }
+.main-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; }
+.main-top span { font-family: "Inter"; font-size: 20px; color: #0F1B65; }
+.bt-novo-equipamento { text-decoration: none; color: #fff; font-family: "Montserrat-Medium"; font-size: 13px; padding: 10px; background-color: #2155FC; border-radius: 6px; }
+
+/* Card de Detalhes */
+.card-detalhes {
+  background: #fff; border: 1px solid #DDE6EF; border-radius: 12px;
+  padding: 32px; margin-bottom: 24px;
+}
+
+.detalhe-row {
+  display: flex; gap: 32px; margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.detalhe-grupo { flex: 1; min-width: 140px; }
+.detalhe-label { display: block; font-size: 10px; color: #94A3B8; text-transform: uppercase; letter-spacing: .5px; margin-bottom: 4px; }
+.detalhe-valor { font-family: "Montserrat-Medium"; font-size: 14px; color: #0F1B65; }
+
+.acoes-detalhes { display: flex; gap: 12px; padding-top: 16px; border-top: 1px solid #F1F5F9; margin-top: 8px; }
+.btn-preventiva { text-decoration: none; padding: 10px 20px; border-radius: 6px; font-family: "Montserrat-Medium"; font-size: 12px; background-color: #EFF6FF; color: #2563EB; border: 1px solid #BFDBFE; }
+.btn-chamado { text-decoration: none; padding: 10px 20px; border-radius: 6px; font-family: "Montserrat-Medium"; font-size: 12px; background-color: #FFF7ED; color: #EA580C; border: 1px solid #FED7AA; }
+
+/* Histórico */
+.historico-section { background: #fff; border: 1px solid #DDE6EF; border-radius: 12px; padding: 24px; }
+.historico-section h3 { font-family: "Inter"; font-size: 16px; color: #0F1B65; margin-bottom: 16px; }
+
+.tabela-historico { width: 100%; border-collapse: collapse; }
+.tabela-historico th { background-color: #F8FAFC; color: #64748B; font-size: 11px; text-transform: uppercase; letter-spacing: .5px; padding: 12px 16px; text-align: left; }
+.tabela-historico td { padding: 14px 16px; border-bottom: 1px solid #F1F5F9; font-size: 13px; color: #374151; }
+.tabela-historico tr:last-child td { border-bottom: none; }
+
+.badge-status { font-size: 11px; padding: 4px 10px; border-radius: 12px; font-family: "Montserrat-Medium"; }
+.badge-status.verde { background: #DCFCE7; color: #16A34A; }
+.badge-status.amarelo { background: #FEF9C3; color: #CA8A04; }
+.badge-status.vermelho { background: #FEE2E2; color: #DC2626; }

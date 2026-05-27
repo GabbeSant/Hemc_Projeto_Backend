@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Hemec | Detalhes do Equipamento</title>
+    <link rel="stylesheet" href="/css/detalhes-equipamento.css" />
+  </head>
+  <body>
+    <aside class="sidebar">
+      <img src="/images-DEV-EV/logo.png" class="logo" alt="logo" />
+      <hr />
+      <nav class="menu-section">
+        <span>PRINCIPAL</span>
+        <a href="/pages/dashboard.html" class="nav-dashboard">
+          <img src="/images-DEV-EV/icone-1.png" alt="ICONE DASHBOARD" />
+          <span>Dashboard</span>
+        </a>
+        <a href="/pages/equipamentos.html" class="nav-equipamentos">
+          <img src="/images-DEV-EV/icone-2.png" alt="ICONE EQUIPAMENTOS" />
+          <span>Equipamentos</span>
+        </a>
+      </nav>
+      <nav class="menu-section">
+        <span>MANUTENÇÃO</span>
+        <a href="/pages/ordens-servico.html" class="nav-ordens-servico">
+          <img src="/images-DEV-EV/icone-3.png" alt="ICONE ORDENS DE SERVIÇO" />
+          <span>Ordens de Serviço</span>
+        </a>
+        <a href="/pages/manutencao-preventiva.html" class="nav-manut-prev">
+          <img src="/images-DEV-EV/icone-4.png" alt="ICONE MANUTENÇÃO PREVENTIVA" />
+          <span>Manutenção Preventiva</span>
+        </a>
+      </nav>
+      <div class="sidebar-footer">
+        <a href="/pages/perfil.html" class="nav-perfil">
+          <div class="avatar">
+            <img src="/images-DEV-EV/icone-5.png" alt="Avatar" />
+            <span class="nome-paciente">-</span>
+          </div>
+        </a>
+        <a href="#" class="bt-navegacao" onclick="fazerLogout(event)">
+          <img src="/images-DEV-EV/icone-6.png" alt="IMAGEM DE SAIR" />
+        </a>
+      </div>
+    </aside>
+
+    <div class="conteudo-principal">
+      <div class="main-top">
+        <span>Detalhes do Equipamento</span>
+        <a href="/pages/equipamentos.html" class="bt-novo-equipamento">Voltar</a>
+      </div>
+
+      <div class="card-detalhes" id="card-detalhes">
+        <div class="detalhe-row">
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">PATRIMÔNIO</span>
+            <span class="detalhe-valor" id="d-patrimonio">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">MODELO</span>
+            <span class="detalhe-valor" id="d-modelo">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">Nº SÉRIE</span>
+            <span class="detalhe-valor" id="d-serie">-</span>
+          </div>
+        </div>
+
+        <div class="detalhe-row">
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">TIPO</span>
+            <span class="detalhe-valor" id="d-tipo">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">FABRICANTE</span>
+            <span class="detalhe-valor" id="d-fabricante">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">SETOR</span>
+            <span class="detalhe-valor" id="d-setor">-</span>
+          </div>
+        </div>
+
+        <div class="detalhe-row">
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">CRITICIDADE</span>
+            <span class="detalhe-valor" id="d-criticidade">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">FREQUÊNCIA PREVENTIVA</span>
+            <span class="detalhe-valor" id="d-frequencia">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">STATUS</span>
+            <span class="detalhe-valor" id="d-status">-</span>
+          </div>
+        </div>
+
+        <div class="detalhe-row">
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">DATA AQUISIÇÃO</span>
+            <span class="detalhe-valor" id="d-aquisicao">-</span>
+          </div>
+          <div class="detalhe-grupo">
+            <span class="detalhe-label">VALOR AQUISIÇÃO</span>
+            <span class="detalhe-valor" id="d-valor">-</span>
+          </div>
+        </div>
+
+        <div class="acoes-detalhes">
+          <a id="btn-preventiva" href="#" class="btn-preventiva">Fazer Preventiva</a>
+          <a id="btn-chamado" href="#" class="btn-chamado">Abrir Chamado</a>
+        </div>
+      </div>
+
+      <div class="historico-section">
+        <h3>Histórico de Manutenções</h3>
+        <table class="tabela-historico">
+          <thead>
+            <tr>
+              <th>DATA</th>
+              <th>TIPO</th>
+              <th>OS</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-historico">
+            <tr><td colspan="3" style="text-align:center;padding:1rem;">Carregando...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <script src="/js/api.js"></script>
+    <script src="/js/detalhes-equipamento.js"></script>
+  </body>
+</html>

@@ -2,14 +2,21 @@ from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 
 from database import get_db
-from models.catalogs import Fabricante, Setor, TipoEquipamento
+from models.catalogs import Fabricante, Setor, TipoEquipamento, Unidade
 
 router = APIRouter(tags=["Catálogos"])
 
 
+@router.get("/unidades")
+def listar_unidades(db: Session = Depends(get_db)):
+    return [{"id_unidade": u.id_unidade, "nome_unidade": u.nome_unidade}
+            for u in db.query(Unidade).all()]
+
+
 @router.get("/setores")
 def listar_setores(db: Session = Depends(get_db)):
-    return [{"id_setor": s.id_setor, "nome_setor": s.nome_setor} for s in db.query(Setor).all()]
+    return [{"id_setor": s.id_setor, "nome_setor": s.nome_setor, "id_unidade": s.id_unidade}
+            for s in db.query(Setor).all()]
 
 
 @router.get("/tipos")
