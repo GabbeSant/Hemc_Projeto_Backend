@@ -104,6 +104,9 @@ a {
     background-color: #ffffff;
     overflow-y: auto;
 }
+.panel-form>div{
+    margin: 2%;
+}
 
 /* =========================================
    CARD DE LOGIN
@@ -161,7 +164,7 @@ input[type="radio"] {
 
 .card-perfil {
     flex: 1;
-    padding: 16px 8px;
+    padding: 16px 35px;
     border: 2px solid #DDE6EF;
     border-radius: 10px;
     display: flex;

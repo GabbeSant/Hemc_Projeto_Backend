@@ -61,7 +61,7 @@ async function submeterChamado(e) {
       descricao_problema: descricao,
       nivel_urgencia: urgenciaSelecionada,
       id_equipamento: idEquip,
-      id_usuario_abertura: 1,  // usuário fixo por enquanto (sem login real)
+      id_usuario_abertura: Auth.getUsuario()?.id_usuario || 1,
       id_setor: idSetor,
     });
     alert("Chamado aberto com sucesso! Uma OS corretiva foi gerada automaticamente.");

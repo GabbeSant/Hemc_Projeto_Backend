@@ -9,6 +9,7 @@ class Usuario(Base):
     nome = Column(String, nullable=False)
     perfil = Column(String, nullable=False)
     id_setor = Column(Integer, ForeignKey("setor.id_setor"), nullable=False)
+    senha_hash = Column(String, nullable=True)
 
     __table_args__ = (
         CheckConstraint("perfil IN ('admin','enfermeira','tecnico')", name="ck_perfil"),

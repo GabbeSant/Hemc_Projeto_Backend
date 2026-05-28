@@ -1,6 +1,9 @@
+import hashlib
+
 from fastapi import Depends, FastAPI
 from fastapi.responses import FileResponse
 from fastapi.staticfiles import StaticFiles
+from sqlalchemy import text
 from sqlalchemy.orm import Session
 
 import database
@@ -10,9 +13,11 @@ from models import usuario as _usuario_model        # noqa: F401
 from models import chamado as _chamado_model        # noqa: F401
 from models import ordem_servico as _os_model       # noqa: F401
 from models import manutencao as _manut_model       # noqa: F401
+from models import sessao as _sessao_model          # noqa: F401
 from models.catalogs import Fabricante, Setor, TipoEquipamento, Unidade
 from models.usuario import Usuario
 from models.manutencao import ChecklistItem, Peca
+from routes.auth import router as auth_router, get_current_user
 from routes.catalogs import router as catalogs_router
 from routes.equipamento import router as equipamento_router
 from routes.chamado import router as chamado_router
@@ -24,15 +29,34 @@ app = FastAPI(title="HEMC - Controle de Manutenção de Equipamentos Hospitalare
 
 database.Base.metadata.create_all(bind=database.engine)
 
+_SENHA_PADRAO_HASH = hashlib.sha256("senha123".encode()).hexdigest()
+
 
 @app.on_event("startup")
 def startup():
+    # Migração: adiciona senha_hash ao usuario se ainda não existir
+    with database.engine.connect() as conn:
+        try:
+            conn.execute(text("ALTER TABLE usuario ADD COLUMN senha_hash TEXT"))
+            conn.commit()
+        except Exception:
+            pass  # coluna já existe
+
     db = database.SessionLocal()
     try:
+        # Garante que usuários antigos (sem senha_hash) recebam a senha padrão
+        sem_senha = db.query(Usuario).filter(Usuario.senha_hash == None).all()  # noqa: E711
+        if sem_senha:
+            for u in sem_senha:
+                u.senha_hash = _SENHA_PADRAO_HASH
+            db.commit()
+
         gerar_os_preventivas_pendentes(db)
     finally:
         db.close()
 
+
+app.include_router(auth_router, prefix="/api")
 app.include_router(equipamento_router, prefix="/api")
 app.include_router(catalogs_router, prefix="/api")
 app.include_router(chamado_router, prefix="/api")
@@ -50,14 +74,15 @@ app.mount("/pages", StaticFiles(directory="static/pages", html=True), name="page
 
 
 @app.get("/api/indicadores", tags=["Indicadores"])
-def indicadores(db: Session = Depends(database.get_db)):
+def indicadores(
+    db: Session = Depends(database.get_db),
+    _: Usuario = Depends(get_current_user),
+):
     from models.equipamento import Equipamento
     from models.chamado import Chamado
     from models.ordem_servico import OrdemServico as OS
     from models.manutencao import Manutencao
 
-    # Disparo oportunístico: gera OS preventivas pendentes a cada consulta da home.
-    # Mantém o ciclo síncrono sem precisar de scheduler externo.
     gerar_os_preventivas_pendentes(db)
 
     total = db.query(Equipamento).count()
@@ -130,19 +155,33 @@ def seed(db: Session = Depends(database.get_db)):
         db.flush()
         adicionado.append("catalogos")
 
-    # --- Usuários (inseridos separadamente para sobreviver a seeds parciais) ---
+    # --- Usuários ---
     if db.query(Usuario).count() == 0:
         setor_uti = db.query(Setor).filter(Setor.nome_setor == "UTI").first()
         setor_cc  = db.query(Setor).filter(Setor.nome_setor == "Centro Cirúrgico").first()
         if setor_uti and setor_cc:
+            criados = []
             for nome, perfil, setor in [
                 ("Rafaela Lima",   "enfermeira", setor_uti),
                 ("Carlos Santos",  "tecnico",    setor_uti),
                 ("Ana Oliveira",   "enfermeira", setor_cc),
                 ("Admin Sistema",  "admin",      setor_uti),
             ]:
-                db.add(Usuario(nome=nome, perfil=perfil, id_setor=setor.id_setor))
-            adicionado.append("usuarios")
+                db.add(Usuario(
+                    nome=nome,
+                    perfil=perfil,
+                    id_setor=setor.id_setor,
+                    senha_hash=_SENHA_PADRAO_HASH,
+                ))
+                criados.append(f"{nome} ({perfil})")
+            adicionado.append(f"usuarios: {', '.join(criados)}")
+
+    # --- Atualiza usuários existentes sem senha_hash ---
+    sem_senha = db.query(Usuario).filter(Usuario.senha_hash == None).all()  # noqa: E711
+    if sem_senha:
+        for u in sem_senha:
+            u.senha_hash = _SENHA_PADRAO_HASH
+        adicionado.append(f"senhas_atualizadas: {len(sem_senha)} usuário(s)")
 
     # --- Checklist e peças ---
     if db.query(ChecklistItem).count() == 0:
@@ -169,7 +208,11 @@ def seed(db: Session = Depends(database.get_db)):
         adicionado.append("pecas")
 
     if not adicionado:
-        return {"status": "ja_populado", "msg": "Banco já contém dados."}
+        return {"status": "ja_populado", "msg": "Banco já contém dados.", "senha_padrao": "senha123"}
 
     db.commit()
-    return {"status": "ok", "msg": f"Inserido: {', '.join(adicionado)}."}
+    return {
+        "status": "ok",
+        "msg": f"Inserido: {', '.join(adicionado)}.",
+        "senha_padrao": "senha123",
+    }

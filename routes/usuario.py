@@ -4,6 +4,7 @@ from sqlalchemy.orm import Session
 
 from database import get_db
 from models.usuario import Usuario
+from routes.auth import get_current_user, require_admin
 
 router = APIRouter(prefix="/usuarios", tags=["Usuários"])
 
@@ -24,12 +25,12 @@ class UsuarioOut(BaseModel):
 
 
 @router.get("/", response_model=list[UsuarioOut])
-def listar(db: Session = Depends(get_db)):
+def listar(db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     return db.query(Usuario).all()
 
 
 @router.get("/{id_usuario}", response_model=UsuarioOut)
-def buscar(id_usuario: int, db: Session = Depends(get_db)):
+def buscar(id_usuario: int, db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     u = db.get(Usuario, id_usuario)
     if not u:
         raise HTTPException(status_code=404, detail="Usuário não encontrado")
@@ -37,7 +38,7 @@ def buscar(id_usuario: int, db: Session = Depends(get_db)):
 
 
 @router.post("/", response_model=UsuarioOut, status_code=201)
-def criar(dados: UsuarioCreate, db: Session = Depends(get_db)):
+def criar(dados: UsuarioCreate, db: Session = Depends(get_db), _: Usuario = Depends(require_admin)):
     u = Usuario(**dados.model_dump())
     db.add(u)
     db.commit()

@@ -15,6 +15,8 @@ from models.manutencao import (
     PecaSubstituida,
 )
 from models.ordem_servico import OrdemServico
+from models.usuario import Usuario
+from routes.auth import get_current_user, require_tecnico
 from schemas.manutencao import (
     ManutencaoCorretivaCreate,
     ManutencaoOut,
@@ -25,12 +27,12 @@ router = APIRouter(prefix="/manutencoes", tags=["Manutenção"])
 
 
 @router.get("/", response_model=list[ManutencaoOut])
-def listar(db: Session = Depends(get_db)):
+def listar(db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     return db.query(Manutencao).order_by(Manutencao.id_manutencao.desc()).all()
 
 
 @router.get("/equipamento/{id_equipamento}", response_model=list[ManutencaoOut])
-def historico(id_equipamento: int, db: Session = Depends(get_db)):
+def historico(id_equipamento: int, db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     return (
         db.query(Manutencao)
         .filter(Manutencao.id_equipamento == id_equipamento)
@@ -40,7 +42,7 @@ def historico(id_equipamento: int, db: Session = Depends(get_db)):
 
 
 @router.post("/preventiva", response_model=ManutencaoOut, status_code=201)
-def registrar_preventiva(dados: ManutencaoPreventivaCreate, db: Session = Depends(get_db)):
+def registrar_preventiva(dados: ManutencaoPreventivaCreate, db: Session = Depends(get_db), _: Usuario = Depends(require_tecnico)):
     os_ = db.get(OrdemServico, dados.id_os)
     if not os_:
         raise HTTPException(status_code=404, detail="OS não encontrada")
@@ -89,7 +91,7 @@ def registrar_preventiva(dados: ManutencaoPreventivaCreate, db: Session = Depend
 
 
 @router.post("/corretiva", response_model=ManutencaoOut, status_code=201)
-def registrar_corretiva(dados: ManutencaoCorretivaCreate, db: Session = Depends(get_db)):
+def registrar_corretiva(dados: ManutencaoCorretivaCreate, db: Session = Depends(get_db), _: Usuario = Depends(require_tecnico)):
     os_ = db.get(OrdemServico, dados.id_os)
     if not os_:
         raise HTTPException(status_code=404, detail="OS não encontrada")
@@ -136,14 +138,13 @@ def registrar_corretiva(dados: ManutencaoCorretivaCreate, db: Session = Depends(
     return m
 
 
-# Endpoints auxiliares para o frontend
 @router.get("/pecas")
-def listar_pecas(db: Session = Depends(get_db)):
+def listar_pecas(db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     return [{"id_peca": p.id_peca, "nome_peca": p.nome_peca, "codigo": p.codigo}
             for p in db.query(Peca).all()]
 
 
 @router.get("/checklist-itens")
-def listar_checklist(db: Session = Depends(get_db)):
+def listar_checklist(db: Session = Depends(get_db), _: Usuario = Depends(get_current_user)):
     return [{"id_item": i.id_item, "descricao_teste": i.descricao_teste, "tipo_teste": i.tipo_teste}
             for i in db.query(ChecklistItem).all()]
