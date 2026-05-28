@@ -3,20 +3,20 @@
    ========================================= */
 
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
-    background-color: #ffffff;
-    color: #0F1B65;
+  font-family: "Montserrat", sans-serif;
+  background-color: #ffffff;
+  color: #0f1b65;
 }
 
 a {
-    text-decoration: none;
-    color: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
 /* =========================================
@@ -24,50 +24,50 @@ a {
    ========================================= */
 
 .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 16px 48px;
-    background: #ffffff;
-    border-bottom: 1px solid #DDE6EF;
-    position: sticky;
-    top: 0;
-    z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 48px;
+  background: #ffffff;
+  border-bottom: 1px solid #dde6ef;
+  position: sticky;
+  top: 0;
+  z-index: 100;
 }
 
 .navbar-logo img {
-    width: 130px;
-    height: auto;
+  width: 130px;
+  height: auto;
 }
 
 .navbar-nav {
-    display: flex;
-    gap: 36px;
+  display: flex;
+  gap: 36px;
 }
 
 .navbar-nav a {
-    color: #0F1B65;
-    font-family: 'Inder', sans-serif;
-    font-size: 15px;
-    transition: color 0.2s;
+  color: #0f1b65;
+  font-family: "Inder", sans-serif;
+  font-size: 15px;
+  transition: color 0.2s;
 }
 
 .navbar-nav a:hover {
-    color: #2155FC;
+  color: #2155fc;
 }
 
 .btn-entrar {
-    color: #ffffff;
-    font-family: 'Inder', sans-serif;
-    font-size: 14px;
-    background-color: #0F1B65;
-    border-radius: 8px;
-    padding: 12px 24px;
-    transition: background-color 0.2s;
+  color: #ffffff;
+  font-family: "Inder", sans-serif;
+  font-size: 14px;
+  background-color: #0f1b65;
+  border-radius: 8px;
+  padding: 12px 24px;
+  transition: background-color 0.2s;
 }
 
 .btn-entrar:hover {
-    background-color: #2155FC;
+  background-color: #2155fc;
 }
 
 /* =========================================
@@ -75,44 +75,44 @@ a {
    ========================================= */
 
 .hero-func {
-    display: flex;
-    align-items: center;
-    padding: 60px 48px;
-    gap: 60px;
-    background-color: #F3F9FC;
-    min-height: 280px;
+  display: flex;
+  align-items: center;
+  padding: 60px 48px;
+  gap: 60px;
+  background-color: #f3f9fc;
+  min-height: 280px;
 }
 
 .hero-func-content {
-    flex: 1;
+  flex: 1;
 }
 
 .hero-func-content h1 {
-    font-family: 'Inder', sans-serif;
-    font-size: 48px;
-    color: #0F1B65;
-    margin-bottom: 16px;
+  font-family: "Inder", sans-serif;
+  font-size: 48px;
+  color: #0f1b65;
+  margin-bottom: 16px;
 }
 
 .hero-func-content p {
-    font-size: 16px;
-    color: #64748b;
-    line-height: 1.8;
-    max-width: 480px;
+  font-size: 16px;
+  color: #64748b;
+  line-height: 1.8;
+  max-width: 480px;
 }
 
 .hero-func-image {
-    flex: 1;
-    display: flex;
-    justify-content: flex-end;
+  flex: 1;
+  display: flex;
+  justify-content: flex-end;
 }
 
 .hero-func-image img {
-    width: 100%;
-    max-width: 480px;
-    height: auto;
-    border-radius: 12px;
-    object-fit: cover;
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
 }
 
 /* =========================================
@@ -120,40 +120,40 @@ a {
    ========================================= */
 
 .funcionalidades-section {
-    padding: 60px 48px;
+  padding: 60px 48px;
 }
 
 .funcionalidades-section h2 {
-    font-family: 'Inder', sans-serif;
-    font-size: 32px;
-    color: #0F1B65;
-    margin-bottom: 36px;
+  font-family: "Inder", sans-serif;
+  font-size: 32px;
+  color: #0f1b65;
+  margin-bottom: 36px;
 }
 
 .funcionalidades-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-    gap: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
 }
 
 .func-card {
-    background-color: #F3F9FC;
-    border: 1px solid #DDE6EF;
-    border-radius: 12px;
-    padding: 24px;
+  background-color: #f3f9fc;
+  border: 1px solid #dde6ef;
+  border-radius: 12px;
+  padding: 24px;
 }
 
 .func-card h4 {
-    color: #2155FC;
-    font-family: 'Inder', sans-serif;
-    font-size: 17px;
-    margin-bottom: 10px;
+  color: #2155fc;
+  font-family: "Inder", sans-serif;
+  font-size: 17px;
+  margin-bottom: 10px;
 }
 
 .func-card p {
-    color: #4a5568;
-    font-size: 14px;
-    line-height: 1.7;
+  color: #4a5568;
+  font-size: 14px;
+  line-height: 1.7;
 }
 
 /* =========================================
@@ -161,34 +161,34 @@ a {
    ========================================= */
 
 .cta-section {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 60px 48px;
-    background-color: #0F1B65;
-    gap: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 60px 48px;
+  background-color: #0f1b65;
+  gap: 40px;
 }
 
 .cta-section h3 {
-    color: #ffffff;
-    font-family: 'Montserrat', sans-serif;
-    font-size: 20px;
-    font-weight: 600;
-    line-height: 1.7;
-    max-width: 520px;
+  color: #ffffff;
+  font-family: "Montserrat", sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.7;
+  max-width: 520px;
 }
 
 .btn-cta {
-    color: #ffffff;
-    font-family: 'Inder', sans-serif;
-    font-size: 15px;
-    background-color: #3754ED;
-    border-radius: 8px;
-    padding: 16px 32px;
-    transition: background-color 0.2s;
-    white-space: nowrap;
+  color: #ffffff;
+  font-family: "Inder", sans-serif;
+  font-size: 15px;
+  background-color: #3754ed;
+  border-radius: 8px;
+  padding: 16px 32px;
+  transition: background-color 0.2s;
+  white-space: nowrap;
 }
 
 .btn-cta:hover {
-    background-color: #2155FC;
+  background-color: #2155fc;
 }

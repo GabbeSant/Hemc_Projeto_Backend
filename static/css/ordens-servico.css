@@ -5,7 +5,7 @@
 @font-face {
   font-family: "Inter";
   src: url("/fonts/Inter_18pt-Bold.ttf");
-}   
+}
 
 @font-face {
   font-family: "Montserrat-Light";
@@ -22,141 +22,132 @@
   src: url("/fonts/Montserrat-Medium.ttf");
 }
 
-
-*{
-    margin: 0px;
-    padding: 0px;
-
+* {
+  margin: 0px;
+  padding: 0px;
 }
 
 body {
-    font-family: "Montserrat-Regular", sans-serif;
+  font-family: "Montserrat-Regular", sans-serif;
 }
-
 
 /* =========================================
    2. MENU LATERAL
    ========================================= */
 
 .sidebar {
-    background-color: #0F1B65;
-    display: flex;
-    flex-direction: column;
-    padding: 24px 24px;
-    height: 100vh;
-    width: 18%;
-    justify-content: space-between;
+  background-color: #0f1b65;
+  display: flex;
+  flex-direction: column;
+  padding: 24px 24px;
+  height: 100vh;
+  width: 18%;
+  justify-content: space-between;
 
-     /* ADICIONE ISSO AQUI: */
-    box-sizing: border-box; 
+  /* ADICIONE ISSO AQUI: */
+  box-sizing: border-box;
 
-    /* ADICIONE ISSO: */
-    position: fixed;
-    top: 0;
-    left: 0;
-    z-index: 1000;
+  /* ADICIONE ISSO: */
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
 }
 
 .logo {
-    width: 130px;
-    height: 54px;
-    margin-bottom: 8px;
+  width: 130px;
+  height: 54px;
+  margin-bottom: 8px;
 }
 
 .sidebar hr {
-    border: none;
-    border-top: 1px solid rgba(255, 255, 255, 0.301);
-    margin: 24px 0;
+  border: none;
+  border-top: 1px solid rgba(255, 255, 255, 0.301);
+  margin: 24px 0;
 }
 
 /* Seções do Menu */
 .menu-section {
-    display: flex;
-    flex-direction: column;
-    gap: 4px;
-    margin-bottom: 60px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  margin-bottom: 60px;
 }
 
 .menu-section > span {
-    color: #B5B5B5;
-    font-size: 10px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    margin-bottom: 8px;
-    padding-left: 12px;
+  color: #b5b5b5;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  margin-bottom: 8px;
+  padding-left: 12px;
 }
 
 /* Links de Navegação */
 .menu-section a {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    padding: 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    color: #ffffff;
-    font-size: 12px;
-    transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 12px;
+  transition: all 0.3s ease;
 
-&:hover {
+  &:hover {
     background-color: rgba(255, 255, 255, 0.1);
     color: #ffffff;
-}
+  }
 
-img {
+  img {
     width: 20px;
     height: 20px;
     opacity: 0.8;
+  }
 }
-
-}
-
 
 /* Item Ativo*/
-.nav-ordens-servico{
-    background-color: #1734A8 !important;
-    color: #ffffff !important;
+.nav-ordens-servico {
+  background-color: #1734a8 !important;
+  color: #ffffff !important;
 }
-
-
 
 /* Footer do Usuário */
 .sidebar-footer {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-top: 16px;
-    border-top: 1px solid rgba(255, 255, 255, 0.301);
-    margin-top: auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 16px;
+  border-top: 1px solid rgba(255, 255, 255, 0.301);
+  margin-top: auto;
 
-
-.nav-perfil {
+  .nav-perfil {
     display: flex;
     align-items: center;
     text-decoration: none;
     flex: 1;
-}
+  }
 
-.avatar {
+  .avatar {
     display: flex;
     align-items: center;
-    gap: 25px;
-}
+    gap: 12px;
+  }
 
-img {
-    width: 50px;
-    height: 50px;
+  img {
+    width: 40px;
+    height: 40px;
+  }
 
-}
-
-.nome-paciente {
+  .nome-paciente {
     color: #ffffff;
     font-family: "Inter";
     font-size: 13px;
     font-weight: 500;
-}
+  }
 
-.bt-navegacao{
+  .bt-navegacao {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -165,297 +156,260 @@ img {
     border: none;
 
     img {
-    width: 25px;
-    height: 25px;
+      width: 25px;
+      height: 25px;
+    }
+  }
 }
-
-}
-}
-
-
-
-
-
-
 
 /* =========================================
    2. CONFIGURAÇÃO CONTEÚDO PRINCIPAL
    ========================================= */
 
 .conteudo-principal {
-    margin-left: 18%; /* Empurra tudo para o lado uma só vez */
-    padding: 24px;    /* Espaço interno geral */
-    background-color: #F3F9FC;
-    min-height: 100vh; /* Garante que o fundo vá até o fim */
+  margin-left: 18%; /* Empurra tudo para o lado uma só vez */
+  padding: 24px; /* Espaço interno geral */
+  background-color: #f3f9fc;
+  min-height: 100vh; /* Garante que o fundo vá até o fim */
 }
-
-
-
-
-
 
 /* =========================================
    3. MENU SUPERIOR
    ========================================= */
 
-.main-top{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+.main-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 
+  span {
+    font-family: "Inter";
+    font-size: 20px;
+    color: #0f1b65;
+  }
 
-    span{
-        font-family: "Inter";
-        font-size: 20px;
-        color: #0F1B65;
+  .bt-novo-equipamento {
+    text-decoration: none;
+    color: #ffffff;
+    font-family: "Montserrat-Medium";
+    font-size: 13px;
+    padding: 10px;
+    background-color: #2155fc;
+    border-radius: 6px;
+
+    &:hover {
+      background-color: #1e48e0;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
     }
-
-    .bt-novo-equipamento{
-        text-decoration: none;
-        color: #ffffff;
-        font-family: "Montserrat-Medium";
-        font-size: 13px;
-        padding: 10px;
-        background-color: #2155FC;
-        border-radius: 6px;
-
-    &:hover{
-    background-color: #1E48E0;
-    transform: translateY(-1px);
-    box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
-    }
-    }
+  }
 }
-
-
-
-
-
 
 /* =========================================
    4. INDICADORES DOS CHAMADOS
    ========================================= */
 
 .indicadores-chamados {
-    display: flex;
-    gap: 20px;
-    padding: 20px 0;
+  display: flex;
+  gap: 20px;
+  padding: 20px 0;
 }
 
 /* Estilo base para os 3 cards */
 .total-chamados,
 .criticos,
 .chamados-concluidos {
-    flex: 1;
-    background-color: #ffffff;
-    border: 1px solid #DDE6EF;
-     border-radius: 15px;
-    padding: 15px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+  flex: 1;
+  background-color: #ffffff;
+  border: 1px solid #dde6ef;
+  border-radius: 15px;
+  padding: 15px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
 }
 
-
 .total-chamados {
-    border-top: 4px solid #2155FC;
+  border-top: 4px solid #2155fc;
 }
 
 .criticos {
-    border-top: 4px solid #D62E28; 
+  border-top: 4px solid #d62e28;
 
-span:last-child {
-    color: #EF4444;
+  span:last-child {
+    color: #ef4444;
     font-size: 12px;
-}
+  }
 }
 
 .chamados-concluidos {
-    border-top: 4px solid #10B981; 
+  border-top: 4px solid #10b981;
 }
 
-
 .titulo-indicador {
-    font-size: 10px;
-    color: #0F1B65;
+  font-size: 10px;
+  color: #0f1b65;
 }
 
 .valor-indicador {
-    font-family: "Inter", sans-serif;
-    font-size: 30px;
-    color: #0F1B65;
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  color: #0f1b65;
 }
-
-
-
-
-
-
-
-
 
 /* =========================================
    5. TABELA DE ORDENS DE SERVIÇO
    ========================================= */
 
-.ordens-servico{
-    background-color: #ffffff;
-    border: 1px solid #DDE6EF;
-    border-radius: 12px;
-    padding: 24px;
+.ordens-servico {
+  background-color: #ffffff;
+  border: 1px solid #dde6ef;
+  border-radius: 12px;
+  padding: 24px;
 
-    /* Configuração do Scroll */
-    max-height: 500px; /* Altura fixa para ativar o scroll */
-    overflow-y: auto;  /* Scroll vertical automático */
+  /* Configuração do Scroll */
+  max-height: 500px; /* Altura fixa para ativar o scroll */
+  overflow-y: auto; /* Scroll vertical automático */
 }
 
 /* Estilização da barra de rolagem (opcional, para ficar bonito no Chrome/Edge) */
 .ordens-servico::-webkit-scrollbar {
-    width: 8px;
+  width: 8px;
 }
 .ordens-servico::-webkit-scrollbar-thumb {
-    background-color: #CBD5E1;
-    border-radius: 4px;
+  background-color: #cbd5e1;
+  border-radius: 4px;
 }
 
 /* Configuração base da Tabela */
-.tabela-ordens{
-    width: 100%;
-    border-collapse: collapse; /* Remove espaços duplos nas bordas */
-    min-width: 800px; /* Garante que a tabela não fique espremida em telas pequenas */
+.tabela-ordens {
+  width: 100%;
+  border-collapse: collapse; /* Remove espaços duplos nas bordas */
+  min-width: 800px; /* Garante que a tabela não fique espremida em telas pequenas */
 }
 
 /* Cabeçalho da Tabela */
 .tabela-ordens th {
-    text-align: left;
-    font-size: 10px;
-    color: rgba(0, 0, 0, 0.56);
-    padding-bottom: 12px;
-    border-bottom: 1px solid #F1F5F9;
+  text-align: left;
+  font-size: 10px;
+  color: rgba(0, 0, 0, 0.56);
+  padding-bottom: 12px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 /* Linhas e Células */
 .tabela-ordens td {
-    padding: 16px 0; 
-    font-size: 11px;
-    color: #0F1B65;
-    border-bottom: 1px solid #F1F5F9; 
-    vertical-align: middle;
+  padding: 16px 0;
+  font-size: 11px;
+  color: #0f1b65;
+  border-bottom: 1px solid #f1f5f9;
+  vertical-align: middle;
 }
 
 /* Remover a borda da última linha */
 .tabela-ordens tbody tr:last-child td {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .coluna-os {
-    font-family: "Montserrat-Medium";
-    color: #2563EB;
+  font-family: "Montserrat-Medium";
+  color: #2563eb;
 }
 
-.coluna-EQ{
-    font-family: "Montserrat-Medium";
-    color: #000;
+.coluna-EQ {
+  font-family: "Montserrat-Medium";
+  color: #000;
 }
 
 /* Badge de Criticidade (A, B, C) */
 .badge-criticidade {
-   padding: 3px 12px;
-    border-radius: 4px;
-    font-family: "Inter", sans-serif;
-    font-size: 10px;
-    color: #ffffff;
+  padding: 3px 12px;
+  border-radius: 4px;
+  font-family: "Inter", sans-serif;
+  font-size: 10px;
+  color: #ffffff;
 }
 
 .badge-criticidade.vermelho {
-    background-color: #EF4444;
+  background-color: #ef4444;
 }
 
 .badge-criticidade.amarelo {
-    background-color: #F59E0B;
+  background-color: #f59e0b;
 }
 
-
-
 .badge-status {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px; 
-    padding: 4px 12px;
-    border-radius: 16px; 
-    font-size: 12px;
-    font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 16px;
+  font-size: 12px;
+  font-weight: 500;
 }
 
 /* Pseudo-elemento para criar a bolinha colorida */
 .badge-status::before {
-    content: '';
-    width: 6px;
-    height: 6px;
-    border-radius: 50%;
-    background-color: currentColor; /* Herda a cor do texto */
+  content: "";
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: currentColor; /* Herda a cor do texto */
 }
 
-
 .badge-status.vermelho {
-    background-color: #FEE2E2; 
-    color: #D62E28;
+  background-color: #fee2e2;
+  color: #d62e28;
 }
 
 .badge-status.verde {
-    background-color: #D4F8F1; 
-    color: #00D4AA; 
+  background-color: #d4f8f1;
+  color: #00d4aa;
 }
 
-.badge-status.amarelo{
-    background-color: #FEF3C7; 
-    color: #F59E0B; 
+.badge-status.amarelo {
+  background-color: #fef3c7;
+  color: #f59e0b;
 }
-
 
 .btn-executar {
-    background-color: #F3F9FC;
-    text-decoration: none;
-    color: #0F1B65;
-    border: 1px solid #DDE6EF;
-    padding: 3px 7px;
-    border-radius: 4px;
-    font-size: 11px;
+  background-color: #f3f9fc;
+  text-decoration: none;
+  color: #0f1b65;
+  border: 1px solid #dde6ef;
+  padding: 3px 7px;
+  border-radius: 4px;
+  font-size: 11px;
 }
 
 .btn-executar:hover {
-    background-color: #E2E8F0;
-    color: #0F1B65;
+  background-color: #e2e8f0;
+  color: #0f1b65;
 }
-
-
-
-
 
 /* =========================================
    6. BOTÃO DE ABRIR CHAMADO NOVO
    ========================================= */
 .btn-chamado-container {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 40px 0;
-    width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 40px 0;
+  width: 100%;
 }
 
+.btn-chamado {
+  text-decoration: none;
+  color: #ffffff;
+  font-family: "Montserrat-Medium";
+  font-size: 13px;
+  padding: 10px;
+  background-color: #2155fc;
+  border-radius: 6px;
 
-.btn-chamado{
-        text-decoration: none;
-        color: #ffffff;
-        font-family: "Montserrat-Medium";
-        font-size: 13px;
-        padding: 10px;
-        background-color: #2155FC;
-        border-radius: 6px;
-
-&:hover{
-    background-color: #1E48E0;
+  &:hover {
+    background-color: #1e48e0;
     transform: translateY(-1px);
     box-shadow: 0 4px 8px rgba(33, 85, 252, 0.3);
+  }
 }
-    }

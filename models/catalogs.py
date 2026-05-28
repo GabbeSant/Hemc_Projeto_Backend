@@ -1,7 +1,6 @@
 from sqlalchemy import Column, Integer, String, ForeignKey
 from database import Base
 
-
 class Unidade(Base):
     __tablename__ = "unidade"
 
