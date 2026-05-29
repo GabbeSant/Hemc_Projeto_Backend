@@ -67,6 +67,7 @@ app.include_router(usuario_router, prefix="/api")
 # Serve cada subdiretório no caminho que o HTML já referencia
 app.mount("/css", StaticFiles(directory="static/css"), name="css")
 app.mount("/Images", StaticFiles(directory="static/Images"), name="images")
+app.mount("/images", StaticFiles(directory="static/Images"), name="images_lower")
 app.mount("/fonts", StaticFiles(directory="static/fonts"), name="fonts")
 app.mount("/js", StaticFiles(directory="static/js"), name="js")
 app.mount("/pages", StaticFiles(directory="static/pages", html=True), name="pages")
